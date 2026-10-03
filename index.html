@@ -1,1 +1,32 @@
-PLACEHOLDER
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Village Villa | Dead Sea</title>
+<style>
+html,body{margin:0;min-height:100%;font-family:Arial,sans-serif;background:#fff;color:#111}
+#loading{min-height:100vh;display:grid;place-items:center;text-align:center;padding:24px}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:#8cc63e;animation:p 1s infinite alternate}
+@keyframes p{to{transform:translateY(-8px);opacity:.45}}
+</style>
+</head>
+<body>
+<div id="loading">Loading The Village Villa <span class="dot" style="margin-left:8px"></span></div>
+<script>
+(async()=>{
+  try{
+    const files=["site/site-01.txt","site/site-02.txt","site/site-03.txt","site/site-04.txt","site/site-05.txt","site/site-06.txt","site/site-07.txt","site/site-08.txt","site/site-09.txt","site/site-10.txt","site/site-11.txt","site/site-12.txt","site/site-13.txt","site/site-14.txt","site/site-15.txt","site/site-16.txt","site/site-17.txt","site/site-18.txt","site/site-19.txt","site/site-20.txt","site/site-21.txt"];
+    const parts=await Promise.all(files.map(f=>fetch(f).then(r=>{if(!r.ok)throw new Error(f);return r.text()})));
+    const html=parts.join("");
+    document.open();
+    document.write(html);
+    document.close();
+  }catch(e){
+    document.getElementById("loading").textContent="Unable to load the site. Please refresh.";
+    console.error(e);
+  }
+})();
+</script>
+</body>
+</html>
